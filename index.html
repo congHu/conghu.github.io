@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="main" style="width: 100%;height: 100%;"></div>
+    <script src="https://cdn.bootcss.com/echarts/4.6.0/echarts.min.js"></script>
+    <script>
+        var graph = {
+            nodes: [
+                {name: '前端', value: 1, category: 0},
+                {name: '后端', value: 1, category: 1},
+                {name: '客户端', value: 1, category: 1},
+                {name: '移动端', value: 1, category: 3},
+                {name: '桌面端', value: 1, category: 4},
+                {name: 'Java', value: 60, category: 1},
+                {name: 'C/C++', value: 10, category: 2},
+                {name: 'HTML', value: 50, category: 0},
+                {name: 'CSS', value: 50, category: 0},
+                {name: 'JavaScript', value: 50, category: 0},
+                {name: 'jQuery', value: 50, category: 0},
+                {name: 'Vue.js', value: 30, category: 0},
+                {name: 'react-native', value: 10, category: 3},
+                {name: 'electron', value: 50, category: 4},
+                {name: 'Android', value: 50, category: 3},
+                {name: 'iOS', value: 50, category: 3},
+                {name: '微信小程序', value: 10, category: 3},
+                {name: 'Flutter', value: 10, category: 3},
+                {name: 'C#/.NET', value: 60, category: 7},
+                {name: 'WinForm', value: 50, category: 7},
+                {name: 'WPF', value: 10, category: 7},
+                {name: '数据库', value: 60, category: 8},
+                {name: 'MySQL', value: 50, category: 8},
+                {name: 'MongoDB', value: 50, category: 8},
+                {name: 'SQLite', value: 50, category: 8},
+                {name: 'Bmob', value: 50, category: 8},
+                {name: 'Linux', value: 60, category: 2},
+                {name: 'Shell/sh', value: 30, category: 2},
+                {name: 'Ubuntu', value: 50, category: 2},
+                {name: '嵌入式', value: 1, category: 2},
+                {name: 'OpenWrt', value: 30, category: 2},
+                {name: '树莓派', value: 30, category: 2},
+                {name: '交叉编译', value: 20, category: 2},
+                {name: 'Objective-C', value: 10, category: 3},
+                {name: 'Swift', value: 50, category: 3},
+                {name: 'Spring', value: 10, category: 1},
+                {name: 'PHP', value: 60, category: 5},
+                {name: 'ThinkPhp', value: 30, category: 5},
+                {name: 'Laravel', value: 30, category: 5},
+                {name: 'EasySwoole', value: 30, category: 5},
+                {name: 'Hyperf', value: 30, category: 5},
+                {name: 'NodeJS', value: 30, category: 1},
+                {name: 'express', value: 20, category: 1},
+                {name: 'Docker', value: 30, category: 2},
+                {name: 'Python', value: 40, category: 1},
+                {name: 'Falsk', value: 20, category: 1},
+                {name: 'Selenium', value: 30, category: 1},
+            ],
+            links: [
+                {source: 0, target: 1},
+                {source: 1, target: 2},
+                {source: 0, target: 3},
+                {source: 0, target: 4},
+                {source: 2, target: 3},
+                {source: 2, target: 4},
+                {source: 5, target: 14},
+                {source: 3, target: 14},
+                {source: 3, target: 15},
+                {source: 3, target: 16},
+                {source: 3, target: 12},
+                {source: 0, target: 7},
+                {source: 0, target: 8},
+                {source: 0, target: 9},
+                {source: 0, target: 10},
+                {source: 0, target: 11},
+                {source: 14, target: 12},
+                {source: 14, target: 17},
+                {source: 15, target: 12},
+                {source: 15, target: 17},
+                {source: 15, target: 33},
+                {source: 15, target: 34},
+                {source: 4, target: 13},
+                {source: 4, target: 19},
+                {source: 4, target: 20},
+                {source: 18, target: 19},
+                {source: 18, target: 20},
+                {source: 1, target: 21},
+                {source: 21, target: 22},
+                {source: 21, target: 23},
+                {source: 21, target: 24},
+                {source: 21, target: 25},
+                {source: 1, target: 26},
+                {source: 26, target: 27},
+                {source: 26, target: 28},
+                // {source: 26, target: 29},
+                {source: 26, target: 30},
+                {source: 26, target: 31},
+                {source: 26, target: 32},
+                {source: 29, target: 30},
+                {source: 29, target: 31},
+                {source: 29, target: 32},
+                {source: 6, target: 32},
+                {source: 5, target: 35},
+                {source: 1, target: 35},
+                {source: 1, target: 36},
+                {source: 36, target: 37},
+                {source: 36, target: 38},
+                {source: 36, target: 39},
+                {source: 36, target: 40},
+                {source: 41, target: 1},
+                {source: 41, target: 42},
+                {source: 41, target: 9},
+                {source: 43, target: 26},
+                {source: 44, target: 1},
+                {source: 44, target: 26},
+                {source: 45, target: 44},
+                {source: 46, target: 44},
+            ]
+        }
+        var categories = []
+        graph.nodes.forEach((node, i) => {
+            node.id = i
+            node.symbolSize = node.value
+            if (categories.indexOf(node.category) == -1) categories.push(node.category)
+        })
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+            // title: {
+            //     text: 'Les Miserables',
+            //     subtext: 'Default layout',
+            //     top: 'bottom',
+            //     left: 'right'
+            // },
+            tooltip: {},
+            // legend: [{
+            //     // selectedMode: 'single',
+            //     data: categories.map(function (a) {
+            //         return a.name;
+            //     })
+            // }],
+            animation: false,
+            series : [
+                {
+                    name: 'Les Miserables',
+                    type: 'graph',
+                    layout: 'force',
+                    data: graph.nodes,
+                    links: graph.links,
+                    categories: categories,
+                    roam: true,
+                    label: {
+                        show: true,
+                    },
+                    force: {
+                        repulsion: [50,300],
+                        gravity: 0.1,
+                        // edgeLength: [50,100]
+                    },
+                    focusNodeAdjacency: true,
+                    draggable: true
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
